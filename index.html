@@ -582,6 +582,139 @@
   @keyframes particleFly {
     to { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
   }
+
+  /* ── 管理ボタン（タイトル画面） ── */
+  .admin-entry-btn {
+    position: absolute; bottom: 52px; right: 20px;
+    background: none; border: 1px solid rgba(245,240,232,0.12);
+    color: rgba(245,240,232,0.25); border-radius: 4px;
+    padding: 5px 9px; font-size: 10px; letter-spacing: 0.1em;
+    font-family: "Noto Sans JP", sans-serif;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .admin-entry-btn:hover { border-color: rgba(245,240,232,0.4); color: rgba(245,240,232,0.6); }
+
+  #screen-password {
+    background: linear-gradient(160deg, #0a0a12 0%, #0a0018 100%);
+    align-items: center; justify-content: center;
+    padding: 40px 24px; text-align: center;
+  }
+  .pw-icon { font-size: 48px; margin-bottom: 16px; }
+  .pw-title { font-family: "Zen Antique Soft", serif; font-size: 22px; color: var(--paper); margin-bottom: 6px; }
+  .pw-sub { font-size: 11px; color: rgba(245,240,232,0.4); letter-spacing: 0.1em; margin-bottom: 32px; }
+  .pw-input-wrap { position: relative; width: 100%; margin-bottom: 10px; }
+  .pw-input {
+    width: 100%; padding: 16px 48px 16px 18px;
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 8px; color: var(--paper);
+    font-family: "Noto Sans JP", sans-serif; font-size: 16px;
+    outline: none; transition: border-color 0.2s; letter-spacing: 0.15em;
+  }
+  .pw-input:focus { border-color: var(--gold); }
+  .pw-input.error { border-color: var(--red); animation: wrongShake 0.4s ease; }
+  .pw-toggle {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: rgba(245,240,232,0.4);
+    cursor: pointer; font-size: 18px; padding: 4px;
+  }
+  .pw-submit-btn {
+    width: 100%; padding: 16px;
+    background: var(--blue); color: white; border: none; border-radius: 8px;
+    font-family: "Noto Sans JP", sans-serif; font-size: 16px; font-weight: 900;
+    cursor: pointer; transition: background 0.2s; margin-bottom: 16px;
+  }
+  .pw-submit-btn:hover { background: #1e4a8a; }
+  .pw-error-msg { font-size: 12px; color: var(--red); min-height: 18px; margin-bottom: 8px; }
+  .pw-back-btn {
+    background: none; border: none; color: rgba(245,240,232,0.4);
+    font-family: "Noto Sans JP", sans-serif; font-size: 13px;
+    cursor: pointer; text-decoration: underline;
+  }
+
+  #screen-admin { background: #0d0d18; overflow-y: auto; }
+  .admin-header {
+    background: rgba(10,10,18,0.95); padding: 20px 20px 14px;
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212,160,23,0.2);
+  }
+  .admin-header-top { display: flex; align-items: center; gap: 12px; margin-bottom: 2px; }
+  .admin-header h2 { font-family: "Zen Antique Soft", serif; font-size: 18px; color: var(--gold); flex: 1; }
+  .admin-header-sub { font-size: 10px; color: rgba(245,240,232,0.35); letter-spacing: 0.1em; }
+  .admin-stats { display: flex; gap: 10px; padding: 14px 20px 0; }
+  .admin-stat-card {
+    flex: 1; background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 10px 12px; text-align: center;
+  }
+  .admin-stat-num { font-family: "Zen Antique Soft", serif; font-size: 24px; color: var(--gold); }
+  .admin-stat-label { font-size: 9px; color: rgba(245,240,232,0.4); margin-top: 2px; }
+  .admin-section { padding: 20px 20px 0; }
+  .admin-section-title {
+    font-size: 11px; color: var(--gold); letter-spacing: 0.2em; font-weight: 700;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .admin-section-title::after { content: ""; flex: 1; height: 1px; background: rgba(212,160,23,0.2); }
+  .admin-form { display: flex; flex-direction: column; gap: 10px; }
+  .form-group { display: flex; flex-direction: column; gap: 4px; }
+  .form-label { font-size: 10px; color: rgba(245,240,232,0.5); letter-spacing: 0.1em; font-weight: 700; }
+  .form-input, .form-select, .form-textarea {
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 6px; color: var(--paper);
+    font-family: "Noto Sans JP", sans-serif; font-size: 14px;
+    padding: 10px 12px; outline: none; transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
+  .form-textarea { resize: vertical; min-height: 70px; line-height: 1.6; }
+  .form-select option { background: #1a1a2e; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .choices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .choice-input-wrap { position: relative; }
+  .choice-input-label {
+    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+    font-size: 11px; font-weight: 900; color: rgba(245,240,232,0.4); pointer-events: none;
+  }
+  .choice-input {
+    width: 100%; padding: 10px 10px 10px 28px;
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 6px; color: var(--paper);
+    font-family: "Noto Sans JP", sans-serif; font-size: 13px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .choice-input:focus { border-color: var(--gold); }
+  .choice-input.is-answer { border-color: #00c864; background: rgba(0,200,100,0.08); }
+  .admin-submit-btn {
+    width: 100%; padding: 16px; background: var(--red); color: white;
+    border: none; border-radius: 6px; font-family: "Noto Sans JP", sans-serif;
+    font-size: 16px; font-weight: 900; cursor: pointer; margin-top: 6px;
+    box-shadow: 0 4px 0 #7a1100; transition: transform 0.1s, box-shadow 0.1s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .admin-submit-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #7a1100; }
+  .admin-q-list { display: flex; flex-direction: column; gap: 8px; padding: 16px 20px 40px; }
+  .admin-q-item {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .admin-q-era-badge {
+    font-size: 9px; padding: 3px 7px; border-radius: 99px; border: 1px solid;
+    white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+  }
+  .admin-q-text-wrap { flex: 1; min-width: 0; }
+  .admin-q-text { font-size: 13px; color: var(--paper); line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .admin-q-meta { font-size: 10px; color: rgba(245,240,232,0.35); margin-top: 3px; }
+  .admin-q-delete { background: none; border: none; color: rgba(245,240,232,0.25); cursor: pointer; font-size: 16px; padding: 2px 4px; transition: color 0.2s; flex-shrink: 0; }
+  .admin-q-delete:hover { color: var(--red); }
+  .admin-empty { text-align: center; padding: 30px 20px; color: rgba(245,240,232,0.25); font-size: 13px; }
+  .toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: #00c864; color: white; padding: 12px 24px; border-radius: 99px;
+    font-family: "Noto Sans JP", sans-serif; font-size: 14px; font-weight: 700;
+    z-index: 200; transition: transform 0.3s ease; white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(0,200,100,0.4);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.error-toast { background: var(--red); box-shadow: 0 4px 20px rgba(204,34,0,0.4); }
 </style>
 </head>
 <body>
@@ -621,6 +754,7 @@
 
   <button class="start-btn" onclick="showEraSelect()">は　じ　め　る</button>
   <div class="version-tag">PROTOTYPE v0.1 — 山川準拠</div>
+  <button class="admin-entry-btn" onclick="showPassword()">⚙ 管理</button>
 </div>
 
 <!-- ERA SELECT SCREEN -->
@@ -684,6 +818,124 @@
     <button class="result-btn-secondary" onclick="showEraSelect()">時代選択へもどる</button>
   </div>
 </div>
+
+
+<!-- PASSWORD SCREEN -->
+<div id="screen-password" class="screen">
+  <div class="pw-icon">🔐</div>
+  <div class="pw-title">管理者ログイン</div>
+  <div class="pw-sub">ADMIN ACCESS — パスワードを入力</div>
+  <div class="pw-input-wrap">
+    <input class="pw-input" id="pwInput" type="password" placeholder="パスワード"
+      onkeydown="if(event.key==='Enter')checkPassword()">
+    <button class="pw-toggle" onclick="togglePwVisibility()" id="pwToggle">👁</button>
+  </div>
+  <div class="pw-error-msg" id="pwError"></div>
+  <button class="pw-submit-btn" onclick="checkPassword()">ログイン</button>
+  <button class="pw-back-btn" onclick="showTitle()">← タイトルにもどる</button>
+</div>
+
+<!-- ADMIN SCREEN -->
+<div id="screen-admin" class="screen">
+  <div class="admin-header">
+    <div class="admin-header-top">
+      <button class="back-btn" onclick="showTitle()">← もどる</button>
+      <h2>⚙ 問題管理</h2>
+    </div>
+    <div class="admin-header-sub">QUESTION MANAGER — ユーザー追加問題</div>
+  </div>
+
+  <div class="admin-stats">
+    <div class="admin-stat-card">
+      <div class="admin-stat-num" id="statBuiltin">40</div>
+      <div class="admin-stat-label">プリセット問題</div>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-num" id="statCustom">0</div>
+      <div class="admin-stat-label">追加した問題</div>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-num" id="statTotal">40</div>
+      <div class="admin-stat-label">合計</div>
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-section-title">➕ 新しい問題を追加</div>
+    <div class="admin-form">
+      <div class="form-group">
+        <label class="form-label">問題文</label>
+        <textarea class="form-textarea" id="formQuestion" placeholder="例：大化の改新が行われたのは何年？"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">時代</label>
+          <select class="form-select" id="formEra">
+            <option value="jomon">縄文・弥生</option>
+            <option value="asuka">古墳・飛鳥</option>
+            <option value="nara">奈良・平安</option>
+            <option value="kamakura">鎌倉・室町</option>
+            <option value="sengoku" selected>戦国・安土桃山</option>
+            <option value="edo">江戸</option>
+            <option value="meiji">明治・大正</option>
+            <option value="showa">昭和・近現代</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">難易度</label>
+          <select class="form-select" id="formDifficulty">
+            <option value="easy">★ やさしい</option>
+            <option value="normal" selected>★★ ふつう</option>
+            <option value="hard">★★★ むずかしい</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">選択肢（正解をタップして緑にする）</label>
+        <div class="choices-grid">
+          <div class="choice-input-wrap">
+            <span class="choice-input-label">Ａ</span>
+            <input class="choice-input" id="choiceA" type="text" placeholder="選択肢A"
+              onclick="setAnswer(0)">
+          </div>
+          <div class="choice-input-wrap">
+            <span class="choice-input-label">Ｂ</span>
+            <input class="choice-input" id="choiceB" type="text" placeholder="選択肢B"
+              onclick="setAnswer(1)">
+          </div>
+          <div class="choice-input-wrap">
+            <span class="choice-input-label">Ｃ</span>
+            <input class="choice-input" id="choiceC" type="text" placeholder="選択肢C"
+              onclick="setAnswer(2)">
+          </div>
+          <div class="choice-input-wrap">
+            <span class="choice-input-label">Ｄ</span>
+            <input class="choice-input" id="choiceD" type="text" placeholder="選択肢D"
+              onclick="setAnswer(3)">
+          </div>
+        </div>
+        <div class="form-hint">※ 正解にしたい選択肢をタップ → 緑になります</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">ヒント文（省略可）</label>
+        <input class="form-input" id="formHint" type="text" placeholder="例：この年から年号が変わったよ！">
+      </div>
+
+      <button class="admin-submit-btn" onclick="addCustomQuestion()">問題を追加する</button>
+    </div>
+  </div>
+
+  <div class="admin-section" style="margin-top:24px">
+    <div class="admin-section-title">📋 追加済みの問題</div>
+  </div>
+  <div class="admin-q-list" id="adminQList"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <!-- COMBO FLASH -->
 <div class="combo-flash" id="comboFlash"></div>
@@ -1072,6 +1324,189 @@ function shuffle(arr) {
   }
   return arr;
 }
+
+// ────────────────────────────────────────
+// ADMIN / PASSWORD
+// ────────────────────────────────────────
+const ADMIN_PASSWORD = 'poopoo0730';
+const STORAGE_KEY = 'nihonshi_custom_questions';
+let selectedAnswerIndex = -1;
+
+function showPassword() {
+  showScreen('screen-password');
+  const inp = document.getElementById('pwInput');
+  inp.value = '';
+  document.getElementById('pwError').textContent = '';
+  inp.classList.remove('error');
+  setTimeout(() => inp.focus(), 300);
+}
+
+function togglePwVisibility() {
+  const inp = document.getElementById('pwInput');
+  const btn = document.getElementById('pwToggle');
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else { inp.type = 'password'; btn.textContent = '👁'; }
+}
+
+function checkPassword() {
+  const val = document.getElementById('pwInput').value;
+  const errEl = document.getElementById('pwError');
+  const inp = document.getElementById('pwInput');
+  if (val === ADMIN_PASSWORD) {
+    errEl.textContent = '';
+    showAdmin();
+  } else {
+    inp.classList.remove('error');
+    void inp.offsetWidth;
+    inp.classList.add('error');
+    errEl.textContent = 'パスワードが違います';
+    inp.value = '';
+    setTimeout(() => inp.classList.remove('error'), 500);
+  }
+}
+
+function showAdmin() {
+  showScreen('screen-admin');
+  resetForm();
+  renderAdminList();
+  updateAdminStats();
+}
+
+function setAnswer(idx) {
+  selectedAnswerIndex = idx;
+  ['choiceA','choiceB','choiceC','choiceD'].forEach((id, i) => {
+    document.getElementById(id).classList.toggle('is-answer', i === idx);
+  });
+}
+
+function resetForm() {
+  document.getElementById('formQuestion').value = '';
+  document.getElementById('formHint').value = '';
+  document.getElementById('formEra').value = 'sengoku';
+  document.getElementById('formDifficulty').value = 'normal';
+  ['choiceA','choiceB','choiceC','choiceD'].forEach(id => {
+    document.getElementById(id).value = '';
+    document.getElementById(id).classList.remove('is-answer');
+  });
+  selectedAnswerIndex = -1;
+}
+
+function loadCustomQuestions() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  } catch { return []; }
+}
+
+function saveCustomQuestions(arr) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+}
+
+function addCustomQuestion() {
+  const q = document.getElementById('formQuestion').value.trim();
+  const a = document.getElementById('choiceA').value.trim();
+  const b = document.getElementById('choiceB').value.trim();
+  const c = document.getElementById('choiceC').value.trim();
+  const d = document.getElementById('choiceD').value.trim();
+
+  if (!q) { showToast('問題文を入力してください', true); return; }
+  if (!a || !b || !c || !d) { showToast('選択肢を4つすべて入力してください', true); return; }
+  if (selectedAnswerIndex === -1) { showToast('正解の選択肢をタップしてください', true); return; }
+
+  const eraId = document.getElementById('formEra').value;
+  const newQ = {
+    id: Date.now(),
+    eraId,
+    q,
+    choices: [a, b, c, d],
+    ans: selectedAnswerIndex,
+    hint: document.getElementById('formHint').value.trim() || '頑張れ！',
+    difficulty: document.getElementById('formDifficulty').value
+  };
+
+  const arr = loadCustomQuestions();
+  arr.push(newQ);
+  saveCustomQuestions(arr);
+
+  // ERAのquestionsにも注入
+  injectCustomQuestions();
+
+  resetForm();
+  renderAdminList();
+  updateAdminStats();
+  showToast('✅ 問題を追加しました！');
+}
+
+function deleteCustomQuestion(id) {
+  const arr = loadCustomQuestions().filter(q => q.id !== id);
+  saveCustomQuestions(arr);
+  injectCustomQuestions();
+  renderAdminList();
+  updateAdminStats();
+  showToast('🗑 削除しました');
+}
+
+function injectCustomQuestions() {
+  // まずカスタム問題をERASから一旦除去
+  ERAS.forEach(era => {
+    era.questions = era.questions.filter(q => !q._custom);
+  });
+  // 再注入
+  loadCustomQuestions().forEach(cq => {
+    const era = ERAS.find(e => e.id === cq.eraId);
+    if (era) era.questions.push({ ...cq, _custom: true });
+  });
+}
+
+function updateAdminStats() {
+  const custom = loadCustomQuestions().length;
+  const builtin = ERAS.reduce((sum, e) => sum + e.questions.filter(q => !q._custom).length, 0);
+  document.getElementById('statCustom').textContent = custom;
+  document.getElementById('statBuiltin').textContent = builtin;
+  document.getElementById('statTotal').textContent = builtin + custom;
+}
+
+function renderAdminList() {
+  const list = document.getElementById('adminQList');
+  const arr = loadCustomQuestions();
+  const eraColors = {
+    jomon:'#8B6914', asuka:'#5a4f9a', nara:'#3a7a3a',
+    kamakura:'#7a2020', sengoku:'#cc2200', edo:'#1a5a8a',
+    meiji:'#9a4a00', showa:'#3a6a3a'
+  };
+  const eraNames = {
+    jomon:'縄文・弥生', asuka:'古墳・飛鳥', nara:'奈良・平安',
+    kamakura:'鎌倉・室町', sengoku:'戦国・安土桃山', edo:'江戸',
+    meiji:'明治・大正', showa:'昭和・近現代'
+  };
+  if (arr.length === 0) {
+    list.innerHTML = '<div class="admin-empty">まだ問題が追加されていません</div>';
+    return;
+  }
+  list.innerHTML = arr.map(q => `
+    <div class="admin-q-item">
+      <span class="admin-q-era-badge" style="color:${eraColors[q.eraId]||'#fff'};border-color:${eraColors[q.eraId]||'#fff'}">${eraNames[q.eraId]||q.eraId}</span>
+      <div class="admin-q-text-wrap">
+        <div class="admin-q-text">${q.q}</div>
+        <div class="admin-q-meta">正解：${['Ａ','Ｂ','Ｃ','Ｄ'][q.ans]}「${q.choices[q.ans]}」</div>
+      </div>
+      <button class="admin-q-delete" onclick="deleteCustomQuestion(${q.id})">🗑</button>
+    </div>
+  `).join('');
+}
+
+let toastTimer = null;
+function showToast(msg, isError = false) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.toggle('error-toast', isError);
+  el.classList.add('show');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+// 起動時にカスタム問題を注入
+injectCustomQuestions();
+
 // ────────────────────────────────────────
 // SERVICE WORKER 登録
 // ────────────────────────────────────────
